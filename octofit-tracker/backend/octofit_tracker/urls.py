@@ -21,6 +21,9 @@ from django.urls import path, include
 from .views import router, api_root
 
 CODESPACE_NAME = os.environ.get('CODESPACE_NAME')
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+if CODESPACE_NAME:
+    ALLOWED_HOSTS.append(f"{CODESPACE_NAME}-8000.app.github.dev")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
